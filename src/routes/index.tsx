@@ -695,7 +695,7 @@ function Contact() {
         <Stagger className="grid md:grid-cols-2 gap-6" stagger={0.15}>
           <motion.a
             variants={staggerItem}
-            href="https://wa.me/0546355123"
+            href="https://wa.me/+966546355123"
             target="_blank"
             rel="noreferrer"
             className="group relative overflow-hidden p-10 md:p-14 bg-surface border border-hairline hover:border-accent transition-colors"
@@ -763,7 +763,7 @@ function Footer() {
             <p className="eyebrow mb-4">Contact</p>
             <ul className="space-y-2 text-sm">
               <li><a href="mailto:info@eventology.sa" className="hover:text-accent transition-colors">info@eventology.sa</a></li>
-              <li><a href="https://wa.me/0546355123" className="hover:text-accent transition-colors">WhatsApp</a></li>
+              <li><a href="https://wa.me/+966546355123" className="hover:text-accent transition-colors">WhatsApp</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Instagram</a></li>
             </ul>
           </div>
