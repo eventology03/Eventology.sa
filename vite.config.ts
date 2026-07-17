@@ -1,22 +1,28 @@
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// Static site (GitHub Pages). Outside the Lovable sandbox, nitro switches to
-// the `static` preset which prerenders each route to plain HTML and copies
-// `public/` (including CNAME) into `.output/public/` for direct file hosting.
-// Inside the Lovable sandbox nitro is force-set to Cloudflare; that only
-// affects the sandbox preview build, not the GitHub Pages build.
+// Static site for GitHub Pages.
+//
+// This project has no server functions, no API routes, no runtime env secrets
+// and no server data loaders — every page is a client-hydrated React tree.
+// TanStack Start's SPA mode prerenders a single hydration-ready HTML shell
+// (`index.html`) alongside the client JS/CSS/asset bundles in `dist/client/`,
+// which is exactly what GitHub Pages needs to serve. `public/CNAME` is copied
+// into that folder on every build so custom-domain resolution keeps working.
+//
+// Inside the Lovable sandbox nitro is force-set to Cloudflare (that only
+// affects the preview build). On GitHub Actions (outside the sandbox) nitro
+// is switched to the `static` preset so the SPA shell is emitted with no
+// server runtime required at all.
 export default defineConfig({
   nitro: { preset: "static" },
   tanstackStart: {
-    // Match TanStack Start's prerender lookup for `<entry>.js` in the server
-    // output dir; leaving the default keeps the sandbox (Cloudflare) build
-    // working while satisfying nitro's static preset.
     server: { entry: "server" },
-    prerender: {
+    spa: {
       enabled: true,
-      crawlLinks: true,
-      autoSubfolderIndex: true,
-      retryCount: 2,
+      prerender: {
+        outputPath: "/",
+        crawlLinks: false,
+      },
     },
     pages: [{ path: "/" }],
   },
