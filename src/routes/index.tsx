@@ -695,7 +695,7 @@ function Contact() {
         <Stagger className="grid md:grid-cols-2 gap-6" stagger={0.15}>
           <motion.a
             variants={staggerItem}
-            href="https://wa.me/10000000000"
+            href="https://wa.me/0546355123"
             target="_blank"
             rel="noreferrer"
             className="group relative overflow-hidden p-10 md:p-14 bg-surface border border-hairline hover:border-accent transition-colors"
@@ -716,7 +716,7 @@ function Contact() {
 
           <motion.a
             variants={staggerItem}
-            href="mailto:hello@eventology.studio"
+            href="mailto:info@eventology.sa"
             className="group relative overflow-hidden p-10 md:p-14 bg-surface border border-hairline hover:border-accent transition-colors"
           >
             <div className="flex items-start justify-between mb-16">
@@ -762,8 +762,8 @@ function Footer() {
           <div>
             <p className="eyebrow mb-4">Contact</p>
             <ul className="space-y-2 text-sm">
-              <li><a href="mailto:hello@eventology.studio" className="hover:text-accent transition-colors">hello@eventology.studio</a></li>
-              <li><a href="https://wa.me/10000000000" className="hover:text-accent transition-colors">WhatsApp</a></li>
+              <li><a href="mailto:info@eventology.sa" className="hover:text-accent transition-colors">info@eventology.sa</a></li>
+              <li><a href="https://wa.me/0546355123" className="hover:text-accent transition-colors">WhatsApp</a></li>
               <li><a href="#" className="hover:text-accent transition-colors">Instagram</a></li>
             </ul>
           </div>
