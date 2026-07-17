@@ -1,15 +1,21 @@
-// @lovable.dev/vite-tanstack-config already includes the following — do NOT add them manually
-// or the app will break with duplicate plugins:
-//   - tanstackStart, viteReact, tailwindcss, tsConfigPaths, nitro (build-only using cloudflare as a default target),
-//     componentTagger (dev-only), VITE_* env injection, @ path alias, React/TanStack dedupe,
-//     error logger plugins, and sandbox detection (port/host/strictPort).
-// You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
+// Static site for GitHub Pages.
+//
+// TanStack Start's SPA mode is turned on so the build emits a single
+// hydration-ready `index.html` shell alongside the client JS/CSS/assets.
+// Nitro is disabled outside the Lovable sandbox — no server bundling, no
+// serverless runtime — everything the app needs at runtime is a plain file.
+// `public/CNAME` is copied verbatim into the build output on every build.
 export default defineConfig({
+  nitro: false,
   tanstackStart: {
-    // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
-    // nitro/vite builds from this
-    server: { entry: "server" },
+    spa: {
+      enabled: true,
+      prerender: {
+        outputPath: "/index",
+      },
+    },
+    pages: [{ path: "/" }],
   },
 });
