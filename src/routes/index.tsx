@@ -728,7 +728,7 @@ function Contact() {
               Send a brief, deck, or a paragraph — we'll write back with next steps.
             </p>
             <div className="inline-flex items-center gap-3 text-accent">
-              hello@eventology.studio
+              info@eventology.sa
               <span className="transition-transform group-hover:translate-x-2">→</span>
             </div>
           </motion.a>
