@@ -3,7 +3,17 @@
   "name": "eventology",
   "compatibility_date": "2026-07-26",
   "compatibility_flags": ["nodejs_compat"],
-  "main": "@tanstack/react-start/server-entry",
+  "main": "dist/server.js",
+  "env": {
+    "production": {
+      "route": "*"
+    }
+  },
+  "build": {
+    "command": "bun run build",
+    "cwd": ".",
+    "watch_paths": ["src/**/*.ts", "src/**/*.tsx"]
+  },
   "observability": {
     "enabled": true
   }
