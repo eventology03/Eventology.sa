@@ -50,7 +50,7 @@ const chapters = [
   {
     n: "01",
     label: "Who We Are",
-    body: "Eventology is a discipline-first event operations studio. We exist to turn event execution from a source of risk into a formality — an outcome you can count on before the first invitation goes out.",
+    body: "Eventology is a discipline-first event operations studio. We exist to turn event execution from a source of risk into a formality — an outcome you can count on before the first invitation.",
   },
   {
     n: "02",
@@ -65,7 +65,7 @@ const chapters = [
   {
     n: "04",
     label: "Why Choose Us",
-    body: "Because a successful event is not just something that happened — it's something delivered exactly as intended. That standard, and the operational discipline behind it, is our biggest strength.",
+    body: "Because a successful event is not just something that happened — it's something delivered exactly as intended. That standard, and the operational discipline behind it, is our biggest differentiator.",
   },
 ];
 
@@ -165,10 +165,7 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 to-transparent" />
       </motion.div>
 
-      <motion.div
-        style={{ opacity }}
-        className="mx-auto max-w-[1400px] w-full px-6 md:px-10"
-      >
+      <motion.div style={{ opacity }} className="mx-auto max-w-[1400px] w-full px-6 md:px-10">
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -202,15 +199,16 @@ function Hero() {
             intended.
           </p>
 
-        <div className="flex flex-wrap gap-3">
-            
+          <div className="flex flex-wrap gap-3">
+            <a
               href="#contact"
               className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
             >
               Start a Project
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            
+
+            <a
               href="#services"
               className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full border border-hairline hover:border-accent hover:text-accent transition-colors"
             >
@@ -274,9 +272,7 @@ function VMG() {
               <span className="font-mono text-xs text-accent">{v.n}</span>
               <span className="eyebrow">{v.label}</span>
             </div>
-            <h3 className="display text-2xl md:text-3xl mb-6 leading-tight">
-              {v.title}
-            </h3>
+            <h3 className="display text-2xl md:text-3xl mb-6 leading-tight">{v.title}</h3>
             <p className="text-muted-foreground leading-relaxed">{v.body}</p>
           </motion.div>
         ))}
@@ -288,10 +284,7 @@ function VMG() {
 /* ---------- CHAPTERS ---------- */
 function Chapters() {
   return (
-    <section
-      id="who"
-      className="relative py-24 md:py-40 mx-auto max-w-[1400px] px-6 md:px-10"
-    >
+    <section id="who" className="relative py-24 md:py-40 mx-auto max-w-[1400px] px-6 md:px-10">
       <div className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-20 mb-16">
         <Reveal className="eyebrow">Who We Are</Reveal>
         <Reveal>
@@ -315,9 +308,7 @@ function Chapters() {
             </div>
             <div className="max-w-3xl">
               <p className="eyebrow mb-4">{c.label}</p>
-              <p className="text-2xl md:text-3xl display font-light leading-snug">
-                {c.body}
-              </p>
+              <p className="text-2xl md:text-3xl display font-light leading-snug">{c.body}</p>
             </div>
           </Reveal>
         ))}
@@ -329,10 +320,7 @@ function Chapters() {
 /* ---------- SERVICES ---------- */
 function Services() {
   return (
-    <section
-      id="services"
-      className="py-24 md:py-36 border-y border-hairline bg-surface/40"
-    >
+    <section id="services" className="py-24 md:py-36 border-y border-hairline bg-surface/40">
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-20 mb-16">
           <Reveal className="eyebrow">What We Handle</Reveal>
@@ -354,8 +342,70 @@ function Services() {
             >
               <div className="flex items-start justify-between mb-10">
                 <span className="font-mono text-xs text-accent">{s.n}</span>
-                <span className="w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-sm group-hover:bg-accent group-hover:text-accent-foreground group-hover:border-accent transition-all duration-500 group-hover:rotate-45">
-                  +
+                <span className="w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-sm group-hover:bg-accent group-hover:text-accent-foreground group-hover:border-accent">+
                 </span>
               </div>
-              <h3 className="display text-2xl md:text-3xl
+              <h3 className="display text-2xl md:text-3xl mb-6 leading-tight">{s.title}</h3>
+              <p className="text-muted-foreground leading-relaxed">{s.body}</p>
+            </motion.div>
+          ))}
+        </Stagger>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- WORK ---------- */
+function Work() {
+  return (
+    <section className="py-24 md:py-36 mx-auto max-w-[1400px] px-6 md:px-10">
+      <Reveal className="eyebrow mb-10">Selected Work</Reveal>
+      <Stagger className="grid md:grid-cols-3 gap-6">
+        {works.map((w) => (
+          <motion.div key={w.name} variants={staggerItem} className="group overflow-hidden">
+            <img src={w.img} alt={w.name} className="w-full h-56 object-cover rounded-md" />
+            <div className="mt-4">
+              <div className="font-mono text-xs text-accent">{w.year}</div>
+              <div className="display text-lg">{w.name}</div>
+              <div className="text-muted-foreground">{w.type}</div>
+            </div>
+          </motion.div>
+        ))}
+      </Stagger>
+    </section>
+  );
+}
+
+/* ---------- CONTACT ---------- */
+function Contact() {
+  const [email, setEmail] = useState("");
+  return (
+    <section id="contact" className="py-24 md:py-36 mx-auto max-w-[1400px] px-6 md:px-10">
+      <Reveal className="eyebrow mb-10">Get in Touch</Reveal>
+      <div className="grid md:grid-cols-[1fr_400px] gap-10 items-start">
+        <div>
+          <h2 className="display text-4xl md:text-6xl mb-6">Start a project with us.</h2>
+          <p className="text-muted-foreground mb-6">Tell us about your event and we'll get back to you.</p>
+        </div>
+        <div>
+          <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
+            <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="w-full px-4 py-3 border border-hairline rounded-md" />
+            <button type="submit" className="px-6 py-3 rounded-full bg-accent text-accent-foreground">Contact</button>
+          </form>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- FOOTER ---------- */
+function Footer() {
+  return (
+    <footer className="py-12 border-t border-hairline">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 flex items-center justify-between">
+        <div className="text-muted-foreground">© {new Date().getFullYear()} Eventology</div>
+        <div className="flex items-center gap-6 text-sm text-muted-foreground">Privacy · Terms</div>
+      </div>
+    </footer>
+  );
+}
