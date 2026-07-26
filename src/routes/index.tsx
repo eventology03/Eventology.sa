@@ -1,9 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Nav } from "@/components/site/Nav";
 import { Reveal, Stagger, staggerItem } from "@/components/site/Reveal";
-import { Counter } from "@/components/site/Counter";
 
 import hero from "@/assets/hero.jpg";
 import event1 from "@/assets/event-1.jpg";
@@ -12,7 +11,6 @@ import event3 from "@/assets/event-3.jpg";
 import event4 from "@/assets/event-4.jpg";
 import event5 from "@/assets/event-5.jpg";
 import event6 from "@/assets/event-6.jpg";
-import testimonial1 from "@/assets/testimonial-1.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -113,60 +111,6 @@ const works = [
   { img: event6, name: "Studio Noir SS26", type: "Runway Show", year: "2024" },
 ];
 
-const stats = [
-  { n: 240, suffix: "+", label: "Events delivered" },
-  { n: 12, suffix: "+", label: "Years operating" },
-  { n: 98, suffix: "%", label: "On-time execution" },
-  { n: 320, suffix: "+", label: "Vendor network" },
-];
-
-const testimonials = [
-  {
-    quote:
-      "Eventology delivered with clarity. Their structured workflow and fast turnaround made our flagship summit seamless — they've become our trusted partner for every major operation.",
-    name: "Marcus Halden",
-    role: "Head of Communications, Meridian Group",
-    img: testimonial1,
-  },
-  {
-    quote:
-      "The kind of team you stop worrying about the moment they walk into the room. Every detail was already handled — because it was actually already handled.",
-    name: "Selin Kavas",
-    role: "Founder, Studio Noir",
-    img: testimonial1,
-  },
-  {
-    quote:
-      "They treat execution like an engineering problem. That's exactly what a 900-guest event needs, and it's exactly what we got.",
-    name: "Rafael Ortega",
-    role: "Director of Events, Horizon Ventures",
-    img: testimonial1,
-  },
-];
-
-const faqs = [
-  {
-    q: "What types of events does Eventology handle?",
-    a: "Corporate summits, product launches, conferences, private ceremonies, brand activations, and cultural programming. If it needs to run on a schedule with zero improvisation, we handle it.",
-  },
-  {
-    q: "Do you provide full-service execution or just planning?",
-    a: "Full-service. Planning, design, on-site supervision, hospitality, technical production, and visual identity — one accountable operation, one point of contact.",
-  },
-  {
-    q: "How far in advance should we book?",
-    a: "For flagship events, 8–16 weeks lead time is ideal. We regularly accept shorter runways when the operational scope allows — talk to us first, don't assume no.",
-  },
-  {
-    q: "Can you source vendors outside your standard service list?",
-    a: "Yes. Our scope is not limited to predefined services — we adapt to each event's needs and coordinate any required solution to achieve the intended outcome.",
-  },
-  {
-    q: "Do you work with both corporate and private clients?",
-    a: "Both. The discipline is identical; the scale, tone, and visual language flex to match.",
-  },
-];
-
 const marqueeItems = [
   "Corporate Galas",
   "Product Launches",
@@ -188,9 +132,6 @@ function Index() {
       <Chapters />
       <Services />
       <Work />
-      <Stats />
-      <Testimonials />
-      <FAQ />
       <Contact />
       <Footer />
     </div>
@@ -262,14 +203,14 @@ function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <a
+            
               href="#contact"
               className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
             >
               Start a Project
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-            <a
+            
               href="#services"
               className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full border border-hairline hover:border-accent hover:text-accent transition-colors"
             >
@@ -504,168 +445,6 @@ function Work() {
       >
         View Event
       </motion.div>
-    </section>
-  );
-}
-
-/* ---------- STATS ---------- */
-function Stats() {
-  return (
-    <section className="border-y border-hairline bg-surface/40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-20 md:py-28 grid md:grid-cols-4">
-        {stats.map((s, i) => (
-          <Reveal
-            key={s.label}
-            delay={i * 0.08}
-            className={`py-8 md:py-4 md:px-8 ${
-              i > 0 ? "md:border-l md:border-hairline hairline-t md:border-t-0" : ""
-            }`}
-          >
-            <div className="display text-5xl md:text-7xl mb-3">
-              <Counter to={s.n} suffix={s.suffix} />
-            </div>
-            <p className="eyebrow">{s.label}</p>
-          </Reveal>
-        ))}
-      </div>
-    </section>
-  );
-}
-
-/* ---------- TESTIMONIALS ---------- */
-function Testimonials() {
-  const [i, setI] = useState(0);
-  useEffect(() => {
-    const t = setInterval(() => setI((v) => (v + 1) % testimonials.length), 6500);
-    return () => clearInterval(t);
-  }, []);
-
-  const t = testimonials[i];
-
-  return (
-    <section className="py-24 md:py-36 mx-auto max-w-[1400px] px-6 md:px-10">
-      <div className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-20 mb-16">
-        <Reveal className="eyebrow">Clients</Reveal>
-        <Reveal>
-          <h2 className="display text-4xl md:text-6xl max-w-3xl">
-            What our partners say when the lights come up.
-          </h2>
-        </Reveal>
-      </div>
-
-      <div className="grid md:grid-cols-[240px_1fr] gap-8 md:gap-16 items-start">
-        <div className="relative w-40 md:w-full aspect-square overflow-hidden">
-          <motion.img
-            key={t.img}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1 }}
-            src={t.img}
-            alt={t.name}
-            loading="lazy"
-            className="w-full h-full object-cover grayscale"
-          />
-        </div>
-
-        <div>
-          <motion.blockquote
-            key={t.quote}
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="display text-2xl md:text-4xl leading-snug mb-10"
-          >
-            <span className="text-accent">"</span>
-            {t.quote}
-            <span className="text-accent">"</span>
-          </motion.blockquote>
-
-          <div className="flex items-center justify-between hairline-t pt-6">
-            <div>
-              <p className="font-medium">{t.name}</p>
-              <p className="text-sm text-muted-foreground">{t.role}</p>
-            </div>
-            <div className="flex items-center gap-4">
-              <div className="flex gap-2">
-                {testimonials.map((_, k) => (
-                  <button
-                    key={k}
-                    onClick={() => setI(k)}
-                    aria-label={`Testimonial ${k + 1}`}
-                    className={`h-px transition-all ${
-                      k === i ? "w-10 bg-accent" : "w-6 bg-hairline"
-                    }`}
-                  />
-                ))}
-              </div>
-              <button
-                onClick={() => setI((v) => (v + 1) % testimonials.length)}
-                className="w-11 h-11 rounded-full border border-hairline flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors"
-                aria-label="Next"
-              >
-                →
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- FAQ ---------- */
-function FAQ() {
-  const [open, setOpen] = useState<number | null>(0);
-  return (
-    <section className="border-y border-hairline bg-surface/40">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-24 md:py-36">
-        <div className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-20 mb-12">
-          <Reveal className="eyebrow">FAQ</Reveal>
-          <Reveal>
-            <h2 className="display text-4xl md:text-6xl max-w-3xl">
-              Straight answers before we start.
-            </h2>
-          </Reveal>
-        </div>
-
-        <div className="max-w-4xl md:ml-[320px]">
-          {faqs.map((f, i) => {
-            const isOpen = open === i;
-            return (
-              <div key={i} className="hairline-t last:hairline-b">
-                <button
-                  onClick={() => setOpen(isOpen ? null : i)}
-                  className="w-full flex items-center justify-between text-left py-6 md:py-8 gap-6 group"
-                >
-                  <span className="display text-xl md:text-2xl leading-snug group-hover:text-accent transition-colors">
-                    {f.q}
-                  </span>
-                  <span
-                    className={`shrink-0 w-10 h-10 rounded-full border border-hairline flex items-center justify-center transition-all duration-500 ${
-                      isOpen ? "rotate-45 bg-accent text-accent-foreground border-accent" : ""
-                    }`}
-                  >
-                    +
-                  </span>
-                </button>
-                <motion.div
-                  initial={false}
-                  animate={{
-                    height: isOpen ? "auto" : 0,
-                    opacity: isOpen ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-                  className="overflow-hidden"
-                >
-                  <p className="pb-8 pr-16 text-muted-foreground leading-relaxed max-w-2xl">
-                    {f.a}
-                  </p>
-                </motion.div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
     </section>
   );
 }
