@@ -202,7 +202,7 @@ function Hero() {
             intended.
           </p>
 
-          <div className="flex flex-wrap gap-3">
+        <div className="flex flex-wrap gap-3">
             
               href="#contact"
               className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
