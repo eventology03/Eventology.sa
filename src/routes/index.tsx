@@ -50,7 +50,7 @@ const chapters = [
   {
     n: "01",
     label: "Who We Are",
-    body: "Eventology is a discipline-first event operations studio. We exist to turn event execution from a source of risk into a formality — an outcome you can count on before the first invita[...]
+    body: "Eventology is a discipline-first event operations studio. We exist to turn event execution from a source of risk into a formality — an outcome you can count on before the first invitation goes out.",
   },
   {
     n: "02",
@@ -65,7 +65,7 @@ const chapters = [
   {
     n: "04",
     label: "Why Choose Us",
-    body: "Because a successful event is not just something that happened — it's something delivered exactly as intended. That standard, and the operational discipline behind it, is our biggest [...]
+    body: "Because a successful event is not just something that happened — it's something delivered exactly as intended. That standard, and the operational discipline behind it, is our biggest strength.",
   },
 ];
 
@@ -203,7 +203,7 @@ function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            <a
+            
               href="#contact"
               className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
             >
@@ -211,7 +211,6 @@ function Hero() {
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             
-            <a
               href="#services"
               className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full border border-hairline hover:border-accent hover:text-accent transition-colors"
             >
@@ -355,211 +354,8 @@ function Services() {
             >
               <div className="flex items-start justify-between mb-10">
                 <span className="font-mono text-xs text-accent">{s.n}</span>
-                <span className="w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-sm group-hover:bg-accent group-hover:text-accent-foreground group-hover:border-a[...]
+                <span className="w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-sm group-hover:bg-accent group-hover:text-accent-foreground group-hover:border-accent transition-all duration-500 group-hover:rotate-45">
                   +
                 </span>
               </div>
-              <h3 className="display text-2xl md:text-3xl mb-4 leading-tight">
-                {s.title}
-              </h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">
-                {s.body}
-              </p>
-              <span className="absolute left-0 bottom-0 h-px w-0 bg-accent transition-all duration-700 group-hover:w-full" />
-            </motion.div>
-          ))}
-        </Stagger>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- WORK ---------- */
-function Work() {
-  const [cursor, setCursor] = useState({ x: 0, y: 0, show: false });
-
-  return (
-    <section
-      id="work"
-      onMouseMove={(e) => setCursor((c) => ({ ...c, x: e.clientX, y: e.clientY }))}
-      className="relative py-24 md:py-36 mx-auto max-w-[1400px] px-6 md:px-10"
-    >
-      <div className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-20 mb-16">
-        <Reveal className="eyebrow">Selected Events</Reveal>
-        <Reveal>
-          <h2 className="display text-4xl md:text-6xl max-w-3xl">
-            Executed, <em className="italic text-accent">not improvised.</em>
-          </h2>
-        </Reveal>
-      </div>
-
-      <Stagger className="grid md:grid-cols-2 gap-6 md:gap-8">
-        {works.map((w, i) => (
-          <motion.a
-            key={w.name}
-            href="#contact"
-            variants={staggerItem}
-            onMouseEnter={() => setCursor((c) => ({ ...c, show: true }))}
-            onMouseLeave={() => setCursor((c) => ({ ...c, show: false }))}
-            className={`group relative overflow-hidden bg-surface ${
-              i % 3 === 0 ? "md:col-span-2" : ""
-            }`}
-          >
-            <div
-              className={`relative overflow-hidden ${
-                i % 3 === 0 ? "aspect-[16/8]" : "aspect-[4/5]"
-              }`}
-            >
-              <img
-                src={w.img}
-                alt={w.name}
-                loading="lazy"
-                className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-105"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
-            </div>
-            <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 flex items-end justify-between">
-              <div>
-                <p className="eyebrow mb-2">
-                  {w.type} — {w.year}
-                </p>
-                <h3 className="display text-2xl md:text-4xl">{w.name}</h3>
-              </div>
-              <span className="hidden md:inline-block w-12 h-12 rounded-full border border-hairline bg-background/40 backdrop-blur flex items-center justify-center group-hover:bg-accent group-hov[...]
-                ↗
-              </span>
-            </div>
-          </motion.a>
-        ))}
-      </Stagger>
-
-      {/* cursor-follow label */}
-      <motion.div
-        animate={{
-          x: cursor.x + 16,
-          y: cursor.y + 16,
-          opacity: cursor.show ? 1 : 0,
-          scale: cursor.show ? 1 : 0.6,
-        }}
-        transition={{ type: "spring", stiffness: 260, damping: 24, mass: 0.4 }}
-        className="pointer-events-none fixed top-0 left-0 z-40 px-4 py-2 rounded-full bg-accent text-accent-foreground text-xs font-mono uppercase tracking-widest"
-      >
-        View Event
-      </motion.div>
-    </section>
-  );
-}
-
-/* ---------- CONTACT ---------- */
-function Contact() {
-  return (
-    <section id="contact" className="relative py-24 md:py-40 overflow-hidden">
-      <div
-        aria-hidden
-        className="absolute inset-0 -z-10 opacity-40"
-        style={{
-          background:
-            "radial-gradient(60% 50% at 30% 30%, oklch(0.74 0.12 78 / 0.25), transparent 70%), radial-gradient(50% 50% at 80% 60%, oklch(0.5 0.15 30 / 0.18), transparent 70%)",
-        }}
-      />
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
-        <Reveal className="eyebrow mb-8">Let's Talk</Reveal>
-        <Reveal>
-          <h2 className="display text-5xl md:text-8xl lg:text-9xl leading-[0.95] max-w-6xl mb-16">
-            Tell us what you're <em className="italic text-accent">building.</em>
-            <br />
-            We'll handle how.
-          </h2>
-        </Reveal>
-
-        <Stagger className="grid md:grid-cols-2 gap-6" stagger={0.15}>
-          <motion.a
-            variants={staggerItem}
-            href="https://wa.me/+966546355123"
-            target="_blank"
-            rel="noreferrer"
-            className="group relative overflow-hidden p-10 md:p-14 bg-surface border border-hairline hover:border-accent transition-colors"
-          >
-            <div className="flex items-start justify-between mb-16">
-              <span className="eyebrow">Fastest response</span>
-              <span className="w-3 h-3 rounded-full bg-accent shimmer" />
-            </div>
-            <h3 className="display text-4xl md:text-5xl mb-3">Chat on WhatsApp</h3>
-            <p className="text-muted-foreground mb-8">
-              Get a reply during operating hours, usually within the hour.
-            </p>
-            <div className="inline-flex items-center gap-3 text-accent">
-              Open WhatsApp
-              <span className="transition-transform group-hover:translate-x-2">→</span>
-            </div>
-          </motion.a>
-
-          <motion.a
-            variants={staggerItem}
-            href="mailto:info@eventology.sa"
-            className="group relative overflow-hidden p-10 md:p-14 bg-surface border border-hairline hover:border-accent transition-colors"
-          >
-            <div className="flex items-start justify-between mb-16">
-              <span className="eyebrow">For briefs & RFPs</span>
-              <span className="w-3 h-3 rounded-full bg-foreground/40" />
-            </div>
-            <h3 className="display text-4xl md:text-5xl mb-3">Email us</h3>
-            <p className="text-muted-foreground mb-8">
-              Send a brief, deck, or a paragraph — we'll write back with next steps.
-            </p>
-            <div className="inline-flex items-center gap-3 text-accent">
-              info@eventology.sa
-              <span className="transition-transform group-hover:translate-x-2">→</span>
-            </div>
-          </motion.a>
-        </Stagger>
-      </div>
-    </section>
-  );
-}
-
-/* ---------- FOOTER ---------- */
-function Footer() {
-  return (
-    <footer className="border-t border-hairline">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-24">
-        <div className="grid md:grid-cols-4 gap-10 mb-16">
-          <div className="md:col-span-2">
-            <h3 className="display text-3xl md:text-4xl mb-4">Eventology</h3>
-            <p className="text-muted-foreground max-w-sm">
-              Structure. Clarity. Execution.
-            </p>
-          </div>
-          <div>
-            <p className="eyebrow mb-4">Navigate</p>
-            <ul className="space-y-2 text-sm">
-              <li><a href="#who" className="hover:text-accent transition-colors">Who We Are</a></li>
-              <li><a href="#services" className="hover:text-accent transition-colors">Services</a></li>
-              <li><a href="#work" className="hover:text-accent transition-colors">Work</a></li>
-              <li><a href="#contact" className="hover:text-accent transition-colors">Contact</a></li>
-            </ul>
-          </div>
-          <div>
-            <p className="eyebrow mb-4">Contact</p>
-            <ul className="space-y-2 text-sm">
-              <li><a href="mailto:info@eventology.sa" className="hover:text-accent transition-colors">info@eventology.sa</a></li>
-              <li><a href="https://wa.me/+966546355123" className="hover:text-accent transition-colors">WhatsApp</a></li>
-              <li><a href="#" className="hover:text-accent transition-colors">Instagram</a></li>
-            </ul>
-          </div>
-        </div>
-
-        <div className="hairline-t pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-muted-foreground">
-          <p>© {new Date().getFullYear()} Eventology. All rights reserved.</p>
-          <p className="font-mono">Event Operations, Engineered.</p>
-        </div>
-
-        <div className="mt-16 select-none">
-          <p className="display text-[18vw] leading-none text-accent/10 tracking-tighter">
-            Eventology
-          </p>
-        </div>
-      </div>
-    </footer>
-  );
-}
+              <h3 className="display text-2xl md:text-3xl
