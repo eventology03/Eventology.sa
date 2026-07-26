@@ -50,7 +50,7 @@ const chapters = [
   {
     n: "01",
     label: "Who We Are",
-    body: "Eventology is a discipline-first event operations studio. We exist to turn event execution from a source of risk into a formality — an outcome you can count on before the first invitation goes out.",
+    body: "Eventology is a discipline-first event operations studio. We exist to turn event execution from a source of risk into a formality — an outcome you can count on before the first invita[...]
   },
   {
     n: "02",
@@ -65,7 +65,7 @@ const chapters = [
   {
     n: "04",
     label: "Why Choose Us",
-    body: "Because a successful event is not just something that happened — it's something delivered exactly as intended. That standard, and the operational discipline behind it, is our biggest strength.",
+    body: "Because a successful event is not just something that happened — it's something delivered exactly as intended. That standard, and the operational discipline behind it, is our biggest [...]
   },
 ];
 
@@ -203,7 +203,7 @@ function Hero() {
           </p>
 
           <div className="flex flex-wrap gap-3">
-            
+            <a
               href="#contact"
               className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
             >
@@ -211,6 +211,7 @@ function Hero() {
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
             
+            <a
               href="#services"
               className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full border border-hairline hover:border-accent hover:text-accent transition-colors"
             >
@@ -354,7 +355,7 @@ function Services() {
             >
               <div className="flex items-start justify-between mb-10">
                 <span className="font-mono text-xs text-accent">{s.n}</span>
-                <span className="w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-sm group-hover:bg-accent group-hover:text-accent-foreground group-hover:border-accent transition-all duration-500 group-hover:rotate-45">
+                <span className="w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-sm group-hover:bg-accent group-hover:text-accent-foreground group-hover:border-a[...]
                   +
                 </span>
               </div>
@@ -424,7 +425,7 @@ function Work() {
                 </p>
                 <h3 className="display text-2xl md:text-4xl">{w.name}</h3>
               </div>
-              <span className="hidden md:inline-block w-12 h-12 rounded-full border border-hairline bg-background/40 backdrop-blur flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-accent-foreground transition-all">
+              <span className="hidden md:inline-block w-12 h-12 rounded-full border border-hairline bg-background/40 backdrop-blur flex items-center justify-center group-hover:bg-accent group-hov[...]
                 ↗
               </span>
             </div>
