@@ -1,8 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Nav } from "@/components/site/Nav";
 import { Reveal, Stagger, staggerItem } from "@/components/site/Reveal";
+import { Counter } from "@/components/site/Counter";
 
 import hero from "@/assets/hero.jpg";
 import event1 from "@/assets/event-1.jpg";
@@ -11,6 +12,7 @@ import event3 from "@/assets/event-3.jpg";
 import event4 from "@/assets/event-4.jpg";
 import event5 from "@/assets/event-5.jpg";
 import event6 from "@/assets/event-6.jpg";
+import testimonial1 from "@/assets/testimonial-1.jpg";
 
 export const Route = createFileRoute("/")({
   component: Index,
@@ -50,7 +52,7 @@ const chapters = [
   {
     n: "01",
     label: "Who We Are",
-    body: "Eventology is a discipline-first event operations studio. We exist to turn event execution from a source of risk into a formality — an outcome you can count on before the first invitation.",
+    body: "Eventology is a discipline-first event operations studio. We exist to turn event execution from a source of risk into a formality — an outcome you can count on before the first invitation goes out.",
   },
   {
     n: "02",
@@ -65,7 +67,7 @@ const chapters = [
   {
     n: "04",
     label: "Why Choose Us",
-    body: "Because a successful event is not just something that happened — it's something delivered exactly as intended. That standard, and the operational discipline behind it, is our biggest differentiator.",
+    body: "Because a successful event is not just something that happened — it's something delivered exactly as intended. That standard, and the operational discipline behind it, is our biggest strength.",
   },
 ];
 
@@ -111,6 +113,60 @@ const works = [
   { img: event6, name: "Studio Noir SS26", type: "Runway Show", year: "2024" },
 ];
 
+const stats = [
+  { n: 240, suffix: "+", label: "Events delivered" },
+  { n: 12, suffix: "+", label: "Years operating" },
+  { n: 98, suffix: "%", label: "On-time execution" },
+  { n: 320, suffix: "+", label: "Vendor network" },
+];
+
+const testimonials = [
+  {
+    quote:
+      "Eventology delivered with clarity. Their structured workflow and fast turnaround made our flagship summit seamless — they've become our trusted partner for every major operation.",
+    name: "Marcus Halden",
+    role: "Head of Communications, Meridian Group",
+    img: testimonial1,
+  },
+  {
+    quote:
+      "The kind of team you stop worrying about the moment they walk into the room. Every detail was already handled — because it was actually already handled.",
+    name: "Selin Kavas",
+    role: "Founder, Studio Noir",
+    img: testimonial1,
+  },
+  {
+    quote:
+      "They treat execution like an engineering problem. That's exactly what a 900-guest event needs, and it's exactly what we got.",
+    name: "Rafael Ortega",
+    role: "Director of Events, Horizon Ventures",
+    img: testimonial1,
+  },
+];
+
+const faqs = [
+  {
+    q: "What types of events does Eventology handle?",
+    a: "Corporate summits, product launches, conferences, private ceremonies, brand activations, and cultural programming. If it needs to run on a schedule with zero improvisation, we handle it.",
+  },
+  {
+    q: "Do you provide full-service execution or just planning?",
+    a: "Full-service. Planning, design, on-site supervision, hospitality, technical production, and visual identity — one accountable operation, one point of contact.",
+  },
+  {
+    q: "How far in advance should we book?",
+    a: "For flagship events, 8–16 weeks lead time is ideal. We regularly accept shorter runways when the operational scope allows — talk to us first, don't assume no.",
+  },
+  {
+    q: "Can you source vendors outside your standard service list?",
+    a: "Yes. Our scope is not limited to predefined services — we adapt to each event's needs and coordinate any required solution to achieve the intended outcome.",
+  },
+  {
+    q: "Do you work with both corporate and private clients?",
+    a: "Both. The discipline is identical; the scale, tone, and visual language flex to match.",
+  },
+];
+
 const marqueeItems = [
   "Corporate Galas",
   "Product Launches",
@@ -132,6 +188,9 @@ function Index() {
       <Chapters />
       <Services />
       <Work />
+      <Stats />
+      <Testimonials />
+      <FAQ />
       <Contact />
       <Footer />
     </div>
@@ -165,7 +224,10 @@ function Hero() {
         <div className="absolute inset-0 bg-gradient-to-r from-background/60 to-transparent" />
       </motion.div>
 
-      <motion.div style={{ opacity }} className="mx-auto max-w-[1400px] w-full px-6 md:px-10">
+      <motion.div
+        style={{ opacity }}
+        className="mx-auto max-w-[1400px] w-full px-6 md:px-10"
+      >
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
@@ -207,7 +269,6 @@ function Hero() {
               Start a Project
               <span className="transition-transform group-hover:translate-x-1">→</span>
             </a>
-
             <a
               href="#services"
               className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full border border-hairline hover:border-accent hover:text-accent transition-colors"
@@ -272,7 +333,9 @@ function VMG() {
               <span className="font-mono text-xs text-accent">{v.n}</span>
               <span className="eyebrow">{v.label}</span>
             </div>
-            <h3 className="display text-2xl md:text-3xl mb-6 leading-tight">{v.title}</h3>
+            <h3 className="display text-2xl md:text-3xl mb-6 leading-tight">
+              {v.title}
+            </h3>
             <p className="text-muted-foreground leading-relaxed">{v.body}</p>
           </motion.div>
         ))}
@@ -284,7 +347,10 @@ function VMG() {
 /* ---------- CHAPTERS ---------- */
 function Chapters() {
   return (
-    <section id="who" className="relative py-24 md:py-40 mx-auto max-w-[1400px] px-6 md:px-10">
+    <section
+      id="who"
+      className="relative py-24 md:py-40 mx-auto max-w-[1400px] px-6 md:px-10"
+    >
       <div className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-20 mb-16">
         <Reveal className="eyebrow">Who We Are</Reveal>
         <Reveal>
@@ -308,7 +374,9 @@ function Chapters() {
             </div>
             <div className="max-w-3xl">
               <p className="eyebrow mb-4">{c.label}</p>
-              <p className="text-2xl md:text-3xl display font-light leading-snug">{c.body}</p>
+              <p className="text-2xl md:text-3xl display font-light leading-snug">
+                {c.body}
+              </p>
             </div>
           </Reveal>
         ))}
@@ -320,7 +388,10 @@ function Chapters() {
 /* ---------- SERVICES ---------- */
 function Services() {
   return (
-    <section id="services" className="py-24 md:py-36 border-y border-hairline bg-surface/40">
+    <section
+      id="services"
+      className="py-24 md:py-36 border-y border-hairline bg-surface/40"
+    >
       <div className="mx-auto max-w-[1400px] px-6 md:px-10">
         <div className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-20 mb-16">
           <Reveal className="eyebrow">What We Handle</Reveal>
@@ -342,11 +413,17 @@ function Services() {
             >
               <div className="flex items-start justify-between mb-10">
                 <span className="font-mono text-xs text-accent">{s.n}</span>
-                <span className="w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-sm group-hover:bg-accent group-hover:text-accent-foreground group-hover:border-accent">+
+                <span className="w-8 h-8 rounded-full border border-hairline flex items-center justify-center text-sm group-hover:bg-accent group-hover:text-accent-foreground group-hover:border-accent transition-all duration-500 group-hover:rotate-45">
+                  +
                 </span>
               </div>
-              <h3 className="display text-2xl md:text-3xl mb-6 leading-tight">{s.title}</h3>
-              <p className="text-muted-foreground leading-relaxed">{s.body}</p>
+              <h3 className="display text-2xl md:text-3xl mb-4 leading-tight">
+                {s.title}
+              </h3>
+              <p className="text-muted-foreground text-sm leading-relaxed">
+                {s.body}
+              </p>
+              <span className="absolute left-0 bottom-0 h-px w-0 bg-accent transition-all duration-700 group-hover:w-full" />
             </motion.div>
           ))}
         </Stagger>
@@ -357,42 +434,305 @@ function Services() {
 
 /* ---------- WORK ---------- */
 function Work() {
+  const [cursor, setCursor] = useState({ x: 0, y: 0, show: false });
+
   return (
-    <section className="py-24 md:py-36 mx-auto max-w-[1400px] px-6 md:px-10">
-      <Reveal className="eyebrow mb-10">Selected Work</Reveal>
-      <Stagger className="grid md:grid-cols-3 gap-6">
-        {works.map((w) => (
-          <motion.div key={w.name} variants={staggerItem} className="group overflow-hidden">
-            <img src={w.img} alt={w.name} className="w-full h-56 object-cover rounded-md" />
-            <div className="mt-4">
-              <div className="font-mono text-xs text-accent">{w.year}</div>
-              <div className="display text-lg">{w.name}</div>
-              <div className="text-muted-foreground">{w.type}</div>
+    <section
+      id="work"
+      onMouseMove={(e) => setCursor((c) => ({ ...c, x: e.clientX, y: e.clientY }))}
+      className="relative py-24 md:py-36 mx-auto max-w-[1400px] px-6 md:px-10"
+    >
+      <div className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-20 mb-16">
+        <Reveal className="eyebrow">Selected Events</Reveal>
+        <Reveal>
+          <h2 className="display text-4xl md:text-6xl max-w-3xl">
+            Executed, <em className="italic text-accent">not improvised.</em>
+          </h2>
+        </Reveal>
+      </div>
+
+      <Stagger className="grid md:grid-cols-2 gap-6 md:gap-8">
+        {works.map((w, i) => (
+          <motion.a
+            key={w.name}
+            href="#contact"
+            variants={staggerItem}
+            onMouseEnter={() => setCursor((c) => ({ ...c, show: true }))}
+            onMouseLeave={() => setCursor((c) => ({ ...c, show: false }))}
+            className={`group relative overflow-hidden bg-surface ${
+              i % 3 === 0 ? "md:col-span-2" : ""
+            }`}
+          >
+            <div
+              className={`relative overflow-hidden ${
+                i % 3 === 0 ? "aspect-[16/8]" : "aspect-[4/5]"
+              }`}
+            >
+              <img
+                src={w.img}
+                alt={w.name}
+                loading="lazy"
+                className="w-full h-full object-cover transition-transform duration-[1.4s] ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/10 to-transparent" />
             </div>
-          </motion.div>
+            <div className="absolute inset-x-0 bottom-0 p-6 md:p-8 flex items-end justify-between">
+              <div>
+                <p className="eyebrow mb-2">
+                  {w.type} — {w.year}
+                </p>
+                <h3 className="display text-2xl md:text-4xl">{w.name}</h3>
+              </div>
+              <span className="hidden md:inline-block w-12 h-12 rounded-full border border-hairline bg-background/40 backdrop-blur flex items-center justify-center group-hover:bg-accent group-hover:border-accent group-hover:text-accent-foreground transition-all">
+                ↗
+              </span>
+            </div>
+          </motion.a>
         ))}
       </Stagger>
+
+      {/* cursor-follow label */}
+      <motion.div
+        animate={{
+          x: cursor.x + 16,
+          y: cursor.y + 16,
+          opacity: cursor.show ? 1 : 0,
+          scale: cursor.show ? 1 : 0.6,
+        }}
+        transition={{ type: "spring", stiffness: 260, damping: 24, mass: 0.4 }}
+        className="pointer-events-none fixed top-0 left-0 z-40 px-4 py-2 rounded-full bg-accent text-accent-foreground text-xs font-mono uppercase tracking-widest"
+      >
+        View Event
+      </motion.div>
+    </section>
+  );
+}
+
+/* ---------- STATS ---------- */
+function Stats() {
+  return (
+    <section className="border-y border-hairline bg-surface/40">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-20 md:py-28 grid md:grid-cols-4">
+        {stats.map((s, i) => (
+          <Reveal
+            key={s.label}
+            delay={i * 0.08}
+            className={`py-8 md:py-4 md:px-8 ${
+              i > 0 ? "md:border-l md:border-hairline hairline-t md:border-t-0" : ""
+            }`}
+          >
+            <div className="display text-5xl md:text-7xl mb-3">
+              <Counter to={s.n} suffix={s.suffix} />
+            </div>
+            <p className="eyebrow">{s.label}</p>
+          </Reveal>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+/* ---------- TESTIMONIALS ---------- */
+function Testimonials() {
+  const [i, setI] = useState(0);
+  useEffect(() => {
+    const t = setInterval(() => setI((v) => (v + 1) % testimonials.length), 6500);
+    return () => clearInterval(t);
+  }, []);
+
+  const t = testimonials[i];
+
+  return (
+    <section className="py-24 md:py-36 mx-auto max-w-[1400px] px-6 md:px-10">
+      <div className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-20 mb-16">
+        <Reveal className="eyebrow">Clients</Reveal>
+        <Reveal>
+          <h2 className="display text-4xl md:text-6xl max-w-3xl">
+            What our partners say when the lights come up.
+          </h2>
+        </Reveal>
+      </div>
+
+      <div className="grid md:grid-cols-[240px_1fr] gap-8 md:gap-16 items-start">
+        <div className="relative w-40 md:w-full aspect-square overflow-hidden">
+          <motion.img
+            key={t.img}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 1 }}
+            src={t.img}
+            alt={t.name}
+            loading="lazy"
+            className="w-full h-full object-cover grayscale"
+          />
+        </div>
+
+        <div>
+          <motion.blockquote
+            key={t.quote}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="display text-2xl md:text-4xl leading-snug mb-10"
+          >
+            <span className="text-accent">"</span>
+            {t.quote}
+            <span className="text-accent">"</span>
+          </motion.blockquote>
+
+          <div className="flex items-center justify-between hairline-t pt-6">
+            <div>
+              <p className="font-medium">{t.name}</p>
+              <p className="text-sm text-muted-foreground">{t.role}</p>
+            </div>
+            <div className="flex items-center gap-4">
+              <div className="flex gap-2">
+                {testimonials.map((_, k) => (
+                  <button
+                    key={k}
+                    onClick={() => setI(k)}
+                    aria-label={`Testimonial ${k + 1}`}
+                    className={`h-px transition-all ${
+                      k === i ? "w-10 bg-accent" : "w-6 bg-hairline"
+                    }`}
+                  />
+                ))}
+              </div>
+              <button
+                onClick={() => setI((v) => (v + 1) % testimonials.length)}
+                className="w-11 h-11 rounded-full border border-hairline flex items-center justify-center hover:bg-accent hover:text-accent-foreground hover:border-accent transition-colors"
+                aria-label="Next"
+              >
+                →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ---------- FAQ ---------- */
+function FAQ() {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section className="border-y border-hairline bg-surface/40">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-24 md:py-36">
+        <div className="grid md:grid-cols-[300px_1fr] gap-10 md:gap-20 mb-12">
+          <Reveal className="eyebrow">FAQ</Reveal>
+          <Reveal>
+            <h2 className="display text-4xl md:text-6xl max-w-3xl">
+              Straight answers before we start.
+            </h2>
+          </Reveal>
+        </div>
+
+        <div className="max-w-4xl md:ml-[320px]">
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={i} className="hairline-t last:hairline-b">
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between text-left py-6 md:py-8 gap-6 group"
+                >
+                  <span className="display text-xl md:text-2xl leading-snug group-hover:text-accent transition-colors">
+                    {f.q}
+                  </span>
+                  <span
+                    className={`shrink-0 w-10 h-10 rounded-full border border-hairline flex items-center justify-center transition-all duration-500 ${
+                      isOpen ? "rotate-45 bg-accent text-accent-foreground border-accent" : ""
+                    }`}
+                  >
+                    +
+                  </span>
+                </button>
+                <motion.div
+                  initial={false}
+                  animate={{
+                    height: isOpen ? "auto" : 0,
+                    opacity: isOpen ? 1 : 0,
+                  }}
+                  transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                  className="overflow-hidden"
+                >
+                  <p className="pb-8 pr-16 text-muted-foreground leading-relaxed max-w-2xl">
+                    {f.a}
+                  </p>
+                </motion.div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
     </section>
   );
 }
 
 /* ---------- CONTACT ---------- */
 function Contact() {
-  const [email, setEmail] = useState("");
   return (
-    <section id="contact" className="py-24 md:py-36 mx-auto max-w-[1400px] px-6 md:px-10">
-      <Reveal className="eyebrow mb-10">Get in Touch</Reveal>
-      <div className="grid md:grid-cols-[1fr_400px] gap-10 items-start">
-        <div>
-          <h2 className="display text-4xl md:text-6xl mb-6">Start a project with us.</h2>
-          <p className="text-muted-foreground mb-6">Tell us about your event and we'll get back to you.</p>
-        </div>
-        <div>
-          <form onSubmit={(e) => e.preventDefault()} className="space-y-4">
-            <input value={email} onChange={(e) => setEmail(e.target.value)} placeholder="Email" className="w-full px-4 py-3 border border-hairline rounded-md" />
-            <button type="submit" className="px-6 py-3 rounded-full bg-accent text-accent-foreground">Contact</button>
-          </form>
-        </div>
+    <section id="contact" className="relative py-24 md:py-40 overflow-hidden">
+      <div
+        aria-hidden
+        className="absolute inset-0 -z-10 opacity-40"
+        style={{
+          background:
+            "radial-gradient(60% 50% at 30% 30%, oklch(0.74 0.12 78 / 0.25), transparent 70%), radial-gradient(50% 50% at 80% 60%, oklch(0.5 0.15 30 / 0.18), transparent 70%)",
+        }}
+      />
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10">
+        <Reveal className="eyebrow mb-8">Let's Talk</Reveal>
+        <Reveal>
+          <h2 className="display text-5xl md:text-8xl lg:text-9xl leading-[0.95] max-w-6xl mb-16">
+            Tell us what you're <em className="italic text-accent">building.</em>
+            <br />
+            We'll handle how.
+          </h2>
+        </Reveal>
+
+        <Stagger className="grid md:grid-cols-2 gap-6" stagger={0.15}>
+          <motion.a
+            variants={staggerItem}
+            href="https://wa.me/+966546355123"
+            target="_blank"
+            rel="noreferrer"
+            className="group relative overflow-hidden p-10 md:p-14 bg-surface border border-hairline hover:border-accent transition-colors"
+          >
+            <div className="flex items-start justify-between mb-16">
+              <span className="eyebrow">Fastest response</span>
+              <span className="w-3 h-3 rounded-full bg-accent shimmer" />
+            </div>
+            <h3 className="display text-4xl md:text-5xl mb-3">Chat on WhatsApp</h3>
+            <p className="text-muted-foreground mb-8">
+              Get a reply during operating hours, usually within the hour.
+            </p>
+            <div className="inline-flex items-center gap-3 text-accent">
+              Open WhatsApp
+              <span className="transition-transform group-hover:translate-x-2">→</span>
+            </div>
+          </motion.a>
+
+          <motion.a
+            variants={staggerItem}
+            href="mailto:info@eventology.sa"
+            className="group relative overflow-hidden p-10 md:p-14 bg-surface border border-hairline hover:border-accent transition-colors"
+          >
+            <div className="flex items-start justify-between mb-16">
+              <span className="eyebrow">For briefs & RFPs</span>
+              <span className="w-3 h-3 rounded-full bg-foreground/40" />
+            </div>
+            <h3 className="display text-4xl md:text-5xl mb-3">Email us</h3>
+            <p className="text-muted-foreground mb-8">
+              Send a brief, deck, or a paragraph — we'll write back with next steps.
+            </p>
+            <div className="inline-flex items-center gap-3 text-accent">
+              info@eventology.sa
+              <span className="transition-transform group-hover:translate-x-2">→</span>
+            </div>
+          </motion.a>
+        </Stagger>
       </div>
     </section>
   );
@@ -401,10 +741,44 @@ function Contact() {
 /* ---------- FOOTER ---------- */
 function Footer() {
   return (
-    <footer className="py-12 border-t border-hairline">
-      <div className="mx-auto max-w-[1400px] px-6 md:px-10 flex items-center justify-between">
-        <div className="text-muted-foreground">© {new Date().getFullYear()} Eventology</div>
-        <div className="flex items-center gap-6 text-sm text-muted-foreground">Privacy · Terms</div>
+    <footer className="border-t border-hairline">
+      <div className="mx-auto max-w-[1400px] px-6 md:px-10 py-16 md:py-24">
+        <div className="grid md:grid-cols-4 gap-10 mb-16">
+          <div className="md:col-span-2">
+            <h3 className="display text-3xl md:text-4xl mb-4">Eventology</h3>
+            <p className="text-muted-foreground max-w-sm">
+              Structure. Clarity. Execution.
+            </p>
+          </div>
+          <div>
+            <p className="eyebrow mb-4">Navigate</p>
+            <ul className="space-y-2 text-sm">
+              <li><a href="#who" className="hover:text-accent transition-colors">Who We Are</a></li>
+              <li><a href="#services" className="hover:text-accent transition-colors">Services</a></li>
+              <li><a href="#work" className="hover:text-accent transition-colors">Work</a></li>
+              <li><a href="#contact" className="hover:text-accent transition-colors">Contact</a></li>
+            </ul>
+          </div>
+          <div>
+            <p className="eyebrow mb-4">Contact</p>
+            <ul className="space-y-2 text-sm">
+              <li><a href="mailto:info@eventology.sa" className="hover:text-accent transition-colors">info@eventology.sa</a></li>
+              <li><a href="https://wa.me/+966546355123" className="hover:text-accent transition-colors">WhatsApp</a></li>
+              <li><a href="#" className="hover:text-accent transition-colors">Instagram</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="hairline-t pt-8 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-muted-foreground">
+          <p>© {new Date().getFullYear()} Eventology. All rights reserved.</p>
+          <p className="font-mono">Event Operations, Engineered.</p>
+        </div>
+
+        <div className="mt-16 select-none">
+          <p className="display text-[18vw] leading-none text-accent/10 tracking-tighter">
+            Eventology
+          </p>
+        </div>
       </div>
     </footer>
   );
