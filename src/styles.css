@@ -88,24 +88,37 @@
 }
 
 @keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
 }
 @utility marquee {
   animation: marquee 40s linear infinite;
 }
 
 @keyframes ken-burns {
-  0% { transform: scale(1.05); }
-  100% { transform: scale(1.18); }
+  0% {
+    transform: scale(1.05);
+  }
+  100% {
+    transform: scale(1.18);
+  }
 }
 @utility ken-burns {
   animation: ken-burns 22s ease-out forwards;
 }
 
 @keyframes shimmer {
-  0%, 100% { opacity: 0.4; }
-  50% { opacity: 1; }
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 @utility shimmer {
   animation: shimmer 2.4s ease-in-out infinite;

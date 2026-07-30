@@ -6,15 +6,15 @@
   "main": "dist/server.js",
   "env": {
     "production": {
-      "route": "*"
-    }
+      "route": "*",
+    },
   },
   "build": {
     "command": "bun run build",
     "cwd": ".",
-    "watch_paths": ["src/**/*.ts", "src/**/*.tsx"]
+    "watch_paths": ["src/**/*.ts", "src/**/*.tsx"],
   },
   "observability": {
-    "enabled": true
-  }
+    "enabled": true,
+  },
 }
