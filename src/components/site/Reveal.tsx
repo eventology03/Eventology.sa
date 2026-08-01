@@ -21,7 +21,7 @@ export function Reveal({
   className?: string;
   as?: keyof React.JSX.IntrinsicElements;
 }) {
-  const MotionAs = motion(As as never) as never as typeof motion.div;
+  const MotionAs = motion.create(As as never) as never as typeof motion.div;
   return (
     <MotionAs
       initial="hidden"
