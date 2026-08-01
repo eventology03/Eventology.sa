@@ -244,7 +244,7 @@ export const translations = {
       headingPost: "لنحولها الى واقع.",
       whatsappLabel: "الرد السريع",
       whatsappTitle: "تواصل عبر واتس آب",
-      whatsappBody: ,
+      whatsappBody: "Get a reply during operating hours, usually within the hour.",
       whatsappCta: "افتح واتس آب",
       emailLabel: "لإرسال الملفات والعروض",
       emailTitle: "راسلنا عبر الإيميل",
