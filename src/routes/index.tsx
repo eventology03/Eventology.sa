@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { useRef, useState } from "react";
+import { createFileRoute, useRouterState } from "@tanstack/react-router";
+import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform } from "motion/react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
@@ -37,6 +37,23 @@ const works = [
 
 function Index() {
   const { dir } = useLanguage();
+  const hash = useRouterState({ select: (s) => s.location.hash });
+
+  // Cross-route Link navigations (e.g. from /tickets to /#services) land here
+  // before the target section has mounted, so the router's own hash-scroll
+  // fires too early and silently no-ops. Retry once the hash is known and
+  // this page's sections are in the DOM.
+  useEffect(() => {
+    if (!hash) return;
+    // Runs after the router's own scrollRestoration reset (which otherwise
+    // wins the race and leaves the page at the top). Cross-page hash jumps
+    // land instantly rather than animating, since we're already mid-transition.
+    const id = window.setTimeout(() => {
+      document.getElementById(hash)?.scrollIntoView({ behavior: "instant" });
+    }, 50);
+    return () => window.clearTimeout(id);
+  }, [hash]);
+
   return (
     <div id="top" dir={dir} className="bg-background text-foreground overflow-x-hidden">
       <Nav />
