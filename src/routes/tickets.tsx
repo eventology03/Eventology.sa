@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { motion } from "motion/react";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
@@ -74,13 +74,14 @@ function Tickets() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="#contact"
+                <Link
+                  to="/"
+                  hash="contact"
                   className="inline-flex items-center gap-3 text-accent group-hover:translate-x-1 rtl:group-hover:-translate-x-1 transition-transform"
                 >
                   {t.tickets.selectCta}
                   <span className="rtl:rotate-180">→</span>
-                </a>
+                </Link>
               </motion.div>
             ))}
           </Stagger>
