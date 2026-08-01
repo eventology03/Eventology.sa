@@ -18,15 +18,15 @@ export function Footer() {
             <p className="eyebrow mb-4">{t.footer.navigate}</p>
             <ul className="space-y-2 text-sm">
               {links.map((l) => (
-                <li key={l.href}>
+                <li key={l.type === "route" ? l.href : l.hash}>
                   {l.type === "route" ? (
                     <Link to={l.href} className="hover:text-accent transition-colors">
                       {l.label}
                     </Link>
                   ) : (
-                    <a href={l.href} className="hover:text-accent transition-colors">
+                    <Link to="/" hash={l.hash} className="hover:text-accent transition-colors">
                       {l.label}
-                    </a>
+                    </Link>
                   )}
                 </li>
               ))}
