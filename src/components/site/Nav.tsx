@@ -50,14 +50,15 @@ export function Nav() {
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-500 group-hover:w-full rtl:left-auto rtl:right-0" />
               </Link>
             ) : (
-              <a
-                key={l.href}
-                href={l.href}
+              <Link
+                key={l.hash}
+                to="/"
+                hash={l.hash}
                 className="text-sm text-muted-foreground hover:text-foreground transition-colors relative group"
               >
                 {l.label}
                 <span className="absolute -bottom-1 left-0 h-px w-0 bg-accent transition-all duration-500 group-hover:w-full rtl:left-auto rtl:right-0" />
-              </a>
+              </Link>
             ),
           )}
         </nav>
@@ -68,13 +69,14 @@ export function Nav() {
           >
             {lang === "en" ? "عربي" : "English"}
           </button>
-          <a
-            href="#contact"
+          <Link
+            to="/"
+            hash="contact"
             className="inline-flex items-center gap-2 text-sm px-5 py-2.5 rounded-full bg-foreground text-background hover:bg-accent hover:text-accent-foreground transition-colors"
           >
             {t.nav.cta}
             <span aria-hidden>↗</span>
-          </a>
+          </Link>
         </div>
         <button
           onClick={() => setOpen((o) => !o)}
@@ -94,9 +96,15 @@ export function Nav() {
                   {l.label}
                 </Link>
               ) : (
-                <a key={l.href} href={l.href} onClick={() => setOpen(false)} className="text-lg">
+                <Link
+                  key={l.hash}
+                  to="/"
+                  hash={l.hash}
+                  onClick={() => setOpen(false)}
+                  className="text-lg"
+                >
                   {l.label}
-                </a>
+                </Link>
               ),
             )}
             <button
@@ -108,13 +116,14 @@ export function Nav() {
             >
               {lang === "en" ? "عربي" : "English"}
             </button>
-            <a
-              href="#contact"
+            <Link
+              to="/"
+              hash="contact"
               onClick={() => setOpen(false)}
               className="inline-flex items-center justify-center px-5 py-3 bg-accent text-accent-foreground rounded-full"
             >
               {t.nav.cta}
-            </a>
+            </Link>
           </div>
         </div>
       )}
