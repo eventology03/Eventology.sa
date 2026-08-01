@@ -95,7 +95,7 @@ function Hero() {
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1.1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
-          className="display text-[13vw] md:text-[8.5vw] lg:text-[7.2rem] xl:text-[8.5rem] max-w-6xl"
+          className="display text-[5.2vw] md:text-[3.4vw] lg:text-[2.88rem] xl:text-[3.4rem] max-w-6xl"
         >
           {t.hero.titlePart1} <em className="italic text-accent font-normal">{t.hero.titleEm}</em>,
           <br />
