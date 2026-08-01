@@ -9,7 +9,7 @@ export const translations = {
       titlePart1: "Structure,",
       titleEm: "Clarity",
       titlePart2: "Disciplined Execution.",
-      body: "We plan, design, and execute events as a unified operation — taking full responsibility for every detail so each event is delivered exactly as intended.",
+      body: "We plan, design, and execute events as a unified operation taking full responsibility for every detail so each event is delivered exactly as intended.",
       cta1: "Start a Project",
       cta2: "Our Services",
       scroll: "Scroll",
@@ -66,27 +66,27 @@ export const translations = {
     servicesHeadingEm: "One operation.",
     services: [
       {
-        title: "Event Planning & Management",
+        title: "Event Planning and Management",
         body: "From concept to execution, comprehensive solutions for conferences, meetings, and events across corporate and private clients.",
       },
       {
-        title: "On-Site Supervision & Execution",
+        title: "On-Site Supervision and Execution",
         body: "Precise on-site oversight ensuring smooth event flow and the highest quality across every detail on the day of the event.",
       },
       {
-        title: "Equipment & Décor",
+        title: "Equipment and Décor",
         body: "Table and seating setups, floral arrangements, and furniture selection aligned with the event's identity.",
       },
       {
-        title: "Hospitality & Catering",
+        title: "Hospitality and Catering",
         body: "Premium buffets, beverages, professional serving, and a trained hospitality team for an exceptional guest experience.",
       },
       {
-        title: "Technical & Visual Production",
+        title: "Technical and Visual Production",
         body: "Advanced sound and lighting, display screens, photography and video equipment, and full media coverage.",
       },
       {
-        title: "Visual Identity & Design",
+        title: "Visual Identity and Design",
         body: "Invitations, advertisements, and visual systems that reflect the character of the event and the organizing brand.",
       },
     ],
@@ -244,7 +244,7 @@ export const translations = {
       headingPost: "لنحولها الى واقع.",
       whatsappLabel: "الرد السريع",
       whatsappTitle: "تواصل عبر واتس آب",
-      whatsappBody: "Get a reply during operating hours, usually within the hour.",
+      whatsappBody: ,
       whatsappCta: "افتح واتس آب",
       emailLabel: "لإرسال الملفات والعروض",
       emailTitle: "راسلنا عبر الإيميل",
