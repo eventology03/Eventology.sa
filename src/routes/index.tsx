@@ -114,36 +114,39 @@ function Hero() {
           transition={{ duration: 1.1, delay: 0.35, ease: [0.22, 1, 0.36, 1] }}
           className="display text-[5.2vw] md:text-[3.4vw] lg:text-[2.88rem] xl:text-[3.4rem] max-w-6xl"
         >
-          {t.hero.titlePart1} <em className="italic text-accent font-normal">{t.hero.titleEm}</em>,
+          {t.hero.titlePart1} {t.hero.titleEm},
           <br />
           {t.hero.titlePart2}
         </motion.h1>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.9, delay: 0.55 }}
+          className="mt-6 text-muted-foreground text-[2.6vw] md:text-lg whitespace-nowrap"
+        >
+          {t.hero.body}
+        </motion.p>
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.9, delay: 0.7 }}
-          className="mt-10 grid md:grid-cols-[1fr_auto] gap-8 items-end"
+          className="mt-8 flex flex-wrap gap-3"
         >
-          <p className="text-muted-foreground max-w-xl text-base md:text-lg leading-relaxed">
-            {t.hero.body}
-          </p>
-
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="#contact"
-              className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
-            >
-              {t.hero.cta1}
-              <span className="transition-transform group-hover:translate-x-1">→</span>
-            </a>
-            <a
-              href="#services"
-              className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full border border-hairline hover:border-accent hover:text-accent transition-colors"
-            >
-              {t.hero.cta2}
-            </a>
-          </div>
+          <a
+            href="#contact"
+            className="group inline-flex items-center gap-3 px-6 py-3.5 rounded-full bg-accent text-accent-foreground hover:bg-foreground hover:text-background transition-colors"
+          >
+            {t.hero.cta1}
+            <span className="transition-transform group-hover:translate-x-1">→</span>
+          </a>
+          <a
+            href="#services"
+            className="inline-flex items-center gap-3 px-6 py-3.5 rounded-full border border-hairline hover:border-accent hover:text-accent transition-colors"
+          >
+            {t.hero.cta2}
+          </a>
         </motion.div>
       </motion.div>
 

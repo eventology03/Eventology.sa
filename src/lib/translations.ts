@@ -9,7 +9,7 @@ export const translations = {
       titlePart1: "Structure,",
       titleEm: "Clarity",
       titlePart2: "Disciplined Execution.",
-      body: "We plan, design, and execute events as a unified operation taking full responsibility for every detail so each event is delivered exactly as intended.",
+      body: "We plan, design, and execute events as a unified operation.",
       cta1: "Start a Project",
       cta2: "Our Services",
       scroll: "Scroll",
